@@ -194,7 +194,7 @@ class SQLDebugPanel(DebugPanel):
                 for frame in query['stacktrace']:
                     params = map(escape, frame[0].rsplit('/', 1) + list(frame[1:]))
                     try:
-                        stacktrace.append(u'<span class="path">{0}/</span><span class="file">{1}</span> in <span class="func">{3}</span>(<span class="lineno">{2}</span>)\n  <span class="code">{4}</span>'.format(*params))
+                        stacktrace.append(u'<span class="path">%s/</span><span class="file">%s</span> in <span class="func">%s</span>(<span class="lineno">%s</span>)\n  <span class="code">%s</span>' % (params[0], params[1], params[3], params[2], params[4]))
                     except IndexError:
                         # This frame doesn't have the expected format, so skip it and move on to the next one
                         continue
